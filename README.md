@@ -88,16 +88,23 @@ lib/posts.js          扫描文章、解析 frontmatter、算 slug / 摘要 / �
 lib/template.js       HTML / RSS / sitemap 模板
 public/style.css      纸墨色板样式（暖纸 + 墨 + 赭红）
 content/posts/*.md    文章 —— 你唯一需要天天碰的目录
+test/markdown.test.js 渲染器单测
+test/http.test.js     端到端集成测试（自起自停服务器）
+.github/workflows/    CI：Node 18/20/22/24 矩阵
 ```
 
 ## 开发
 
 ```bash
 npm run dev      # node --watch，改文件自动重启
+npm test         # 31 项渲染器单测 + 18 项集成测试（自起自停，不占固定端口）
 npm run check    # 语法检查（不启动服务）
 npm start        # 生产启动
 LOG=0 node server.js   # 关掉请求日志
 ```
+
+测试零依赖 —— 用 `node:assert`，不装测试框架；集成测试自己 `spawn` 一个实例、
+跑完自己 `kill`，不会误伤机器上已有的进程。CI 在 Node 18 / 20 / 22 / 24 上跑同一套。
 
 ## 部署
 
