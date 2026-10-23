@@ -1,0 +1,18 @@
+{
+  "name": "peter-node-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "纯 Node.js 个人博客 —— 零依赖、无构建、Markdown 驱动。",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/markdown.test.js && node test/http.test.js",
+    "check": "node --check server.js && node --check lib/markdown.js && node --check lib/posts.js && node --check lib/template.js && node --check site.config.js"
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}
